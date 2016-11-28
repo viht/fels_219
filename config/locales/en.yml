@@ -1,0 +1,12 @@
+en:
+  hello: "Hello world"
+  layouts:
+    application:
+      fels219: "Fels219"
+      facebook: "Facebook"
+      activities: "Activities"
+
+  e_learning: "E-Learning"
+  home: "Home"
+  sign_up: "Sign Up"
+  log_in: "Log In"
