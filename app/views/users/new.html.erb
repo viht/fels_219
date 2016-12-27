@@ -8,9 +8,9 @@
     <li class="i"><a href="#"><%= image_tag "ins.png" %></a></li>
     <div class="clear"></div>
   </div>
-  
+
   <div class="content2 w3agile">
-    <h2><%= t "new_user.signup" %></h2>
+    <h2><%= t "sign_up" %></h2>
     <%= form_for @user do |f| %>
       <%= render "shared/error_messages", object: f.object %>
 
@@ -20,9 +20,11 @@
       <%= f.password_field :password_confirmation, placeholder: t("form.confirmation") %>
 
       <div class="button-row">
-        <%= f.submit "Create my account", class: "sign-in" %>
+        <%= f.submit t("create_account"), class: "sign-in" %>
         <div class="clear"></div>
       </div>
     <% end %>
+    <h3> <%= t "account" %> <%= link_to t("index.login"), login_path %></h3>
+    <br>
   </div>
 </div>

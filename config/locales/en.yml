@@ -8,13 +8,11 @@ en:
       activities: "Activities"
 
   sign_up_form: "Sign Up Form"
-  e_learning: "E-Learning"
+  sign_in_form: "Log In Form"
+  e_learning: "E-LEARNING"
   home: "Home"
   sign_up: "Sign Up"
   log_in: "Log In"
-
-  new_user:
-    signup: "Sign Up"
 
   index:
     login: "Sign in!"
@@ -42,6 +40,20 @@ en:
   error_load: "Can't load !"
   not_found: " User not found"
   new_user: "New user?"
+
+  create_account: "Create my account"
+  account: "Already have an account?"
+  let_login: "Please log in."
+  category: "Categories"
+  users: "Users"
+  profile: "Profile"
+  setting: "Settings"
+  log_out: "Log Out"
+  toggle_navigation: "Toggle navigation"
+  main: "MAIN NAVIGATION"
+  search: "Search"
+  e: "E"
+
   created_success: "Created success !"
   updated_success: "Updated success !"
   deleted_success: "Deleted success !"
