@@ -13,6 +13,8 @@ en:
   sign_up: "Sign Up"
   log_in: "Log In"
 
+  new_user: "New user?"
+
   new_user:
     signup: "Sign Up"
 
@@ -32,4 +34,3 @@ en:
   error_content: "The form contains"
   error_invalid: "Invalid email/password combination"
   not_found: " User not found"
-  new_user: "New user?"
