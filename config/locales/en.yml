@@ -6,7 +6,7 @@ en:
       fels219: "Fels219"
       facebook: "Facebook"
       activities: "Activities"
-      
+
   sign_up_form: "Sign Up Form"
   e_learning: "E-Learning"
   home: "Home"
@@ -27,9 +27,27 @@ en:
     message: "Message"
     password: "Password"
     confirmation: "Confirmation"
+    discription: "Discription"
+  view:
+    categories:
+      index:
+        title: "Categories"
+        start: "Start"
+      edit:
+        title: "Edit Category"
 
   error: "Error"
   error_content: "The form contains"
   error_invalid: "Invalid email/password combination"
+  error_load: "Can't load !"
   not_found: " User not found"
   new_user: "New user?"
+  created_success: "Created success !"
+  updated_success: "Updated success !"
+  deleted_success: "Deleted success !"
+  delete: "Delete"
+  edit: "Edit"
+  update: "Update"
+  create: "Create"
+  sure: "You sure?"
+  delete_fails: "Delete fail !"
