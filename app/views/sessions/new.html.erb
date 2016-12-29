@@ -10,20 +10,18 @@
   </div>
 
   <div class="content2 w3agile">
-    <h2><%= t"header.login" %></h2>
+    <h2><%= t"log_in" %></h2>
     <form action="#" method="post">
       <%= form_for :session, url: login_path do |f| %>
         <%= f.email_field :email, placeholder: t("form.email") %>    
         <%= f.password_field :password, placeholder: t("form.password") %>
 
         <div class="button-row">
-          <%= f.submit t"log_in", class: "sign-in" %>
+          <%= f.submit t("log_in"), class: "sign-in" %>
           <div class="clear"></div>
         </div>
-      
       <% end %>
-      <h3> <%= t"new_user" %> <%= link_to t"index.signup", signup_path %></h3>
+      <h3> <%= t("new_user") %> <%= link_to t("index.signup"), signup_path %></h3>
     </form>
-
   </div>
 </div>
