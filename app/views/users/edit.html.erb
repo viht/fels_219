@@ -1,0 +1,19 @@
+<div class="content2 w3agile">
+  <%= form_for @user, html: {multipart: true} do |f| %>
+    <%= render "shared/error_messages" %>
+    <%= f.text_field :name, placeholder: t("form.name") %>
+    <%= f.email_field :email, placeholder: t("form.email") %>
+    <%= f.password_field :password, placeholder: t("form.password") %>
+    <%= f.password_field :password_confirmation,
+      placeholder: t("form.confirmation") %>
+    <div class="">
+      <%= image_tag current_user.avatar.url %>
+      <span class="picture">
+        <%= f.file_field :avatar, accept: Settings.type_image %>
+      </span>
+    </div>
+    <div class="button-row">
+      <%= f.submit t("save_change"), class: "sign-in" %>
+    </div>
+  <% end %>
+</div>

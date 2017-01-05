@@ -40,6 +40,7 @@ en:
       show:
         title: "Lesson"
 
+  on_line: "On line"
   error: "Error"
   error_content: "The form contains"
   error_invalid: "Invalid email/password combination"
@@ -47,9 +48,12 @@ en:
   not_found: " User not found"
   new_user: "New user?"
   erorr_answers: "Just one answer is true"
+  my_account: "Account"
+  user_invalid: "Invalid user"
+  save_change: "Save change"
 
   create_account: "Create my account"
-  account: "Already have an account?"
+  account_already: "Already have an account?"
   let_login: "Please log in."
   category: "Categories"
   users: "Users"
@@ -60,6 +64,8 @@ en:
   main: "MAIN NAVIGATION"
   search: "Search"
   e: "E"
+  profile_updated: "Profile updated"
+  user_deleted: "User deleted"
 
   created_success: "Created success !"
   updated_success: "Updated success !"
@@ -77,3 +83,10 @@ en:
   remove: "Remove"
   all_word: "All Words"
   Finish: "Finish"
+  delete_fails: "Delete fail !"
+
+  account:
+    description: "account"
+    profile: "profile"
+    settings: "settings"
+    logout: "logout"
