@@ -15,5 +15,6 @@
 //= require bootstrap
 //= require_bootstrap-toggle
 //= require turbolinks
-//= require_tree .
+//= require_tree
 //= require select-group
+//= require application_jquery

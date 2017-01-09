@@ -9,9 +9,29 @@ class Word < ActiveRecord::Base
     reject_if: proc {|attributes| attributes[:content].blank?},
     allow_destroy: true
 
+  validates :content, presence: true, length: {maximum: Settings.size_content}
   validates :answers, length: {minimum: Settings.min_answers,
     maximum: Settings.max_answers}
   validate :just_one_answer_true
+
+  filter_byword_learned = "id in (select questions.word_id from lessons
+    join questions on lessons.id = questions.lesson_id
+    where lessons.user_id = ? and lessons.category_id
+    in (?) and questions.word_id is not null)"
+
+  filter_byword_unlearned = "id not in (select questions.word_id from lessons
+    join questions on lessons.id = questions.lesson_id
+    where lessons.user_id = ? and questions.word_id is not null)
+    and category_id in (?)"
+
+  scope :random_index, ->{order "RANDOM()"}
+  scope :by_learned,-> (user_id, category_id) do
+    where filter_byword_learned, user_id, category_id
+  end
+
+  scope :by_unlearned, ->(user_id, category_id) do
+    where filter_byword_unlearned, user_id, category_id
+  end
 
   private
 

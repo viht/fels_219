@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
+  before_action :admin_user, except: [:show, :index]
   before_action :logged_in_user
-  skip_before_action :admin_user, only: :index
-  skip_before_action :load_category, only: :index
+  before_action :load_category, except: [:create, :index]
 
   def index
     @categories = Category.newest.paginate page: params[:page],
@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
     @words = @category.words.paginate page: params[:page],
       per_page: Settings.per_page
     @word = @category.words.build
-    Settings.answers_size_default.times {@word.answers.build}
+    Settings.answer_size_default.times {@word.answers.build}
   end
 
   def create

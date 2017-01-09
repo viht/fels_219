@@ -19,7 +19,7 @@
   <div class="panel-body"><%= @category.discription %></div>
 </div>
 <% if @category.words.any? %>
-  <h3><%= t "all_word" %>(<%= @category.words.length %>)</h3>
+  <h3><%= t "all_word" %>(<%= @category.words.size %>)</h3>
   <ol class="panel panel-success">
     <%= render @words %>
   </ol>

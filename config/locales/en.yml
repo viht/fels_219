@@ -26,7 +26,7 @@ en:
     password: "Password"
     confirmation: "Confirmation"
     discription: "Discription"
-  view:
+  views:
     categories:
       index:
         title: "Categories"
@@ -82,7 +82,7 @@ en:
   add_answer: "Add Answer"
   remove: "Remove"
   all_word: "All Words"
-  Finish: "Finish"
+  finish: "Finish"
   delete_fails: "Delete fail !"
 
   account:
@@ -90,3 +90,9 @@ en:
     profile: "profile"
     settings: "settings"
     logout: "logout"
+  categories: "Categories"
+  start: "Start"
+  started: "Started"
+  were_finished: "You were finished this category !"
+  Exam: "Exam"
+  result: "Result"

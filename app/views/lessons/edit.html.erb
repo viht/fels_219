@@ -1,0 +1,13 @@
+<% provide :title, t("Exam") %>
+<h2 class="center-block"><%= @lesson.category.name %></h2>
+<%= form_for [@lesson.category, @lesson] do |f| %>
+  <% if @lesson.questions.any? %>
+    <%= f.fields_for :questions, @lesson.questions do |builder| %>
+      <div id="questions">
+        <%= render "questions_fields", f: builder %>
+      </div>
+    <% end %>
+  <% end %>
+  <hr>
+  <%= f.submit t("finish"), class: "btn btn-primary" %>
+<% end %>
