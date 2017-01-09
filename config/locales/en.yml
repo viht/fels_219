@@ -106,3 +106,7 @@ en:
   new_word: "New word"
   edit_word: "Edit word"
 
+  following: "Following"
+  followers: "Followers"
+  unfollow: "Unfollow"
+  follow: "Follow"

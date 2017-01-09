@@ -16,3 +16,10 @@ User.create!(name: "Test",
   User.create!(name: name, email: email, password: password,
     password_confirmation: password, role: 0)
 end
+
+users = User.all
+user  = users.first
+following = users[2..15]
+followers = users[3..13]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

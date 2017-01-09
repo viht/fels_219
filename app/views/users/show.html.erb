@@ -1,11 +1,17 @@
 <% provide :title, @user.name %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= image_tag current_user.avatar.url %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+<div class="row center col-sm-4">
+  <section class="user_info">
+    <p>
+      <em><%= image_tag current_user.avatar.url %></em><br>
+      <strong><%= @user.name %></strong><br>
+      <code><%= @user.email %></code>
+    </p><br>
+  </section>
+  <section class="stats">
+    <%= render "shared/stats" %>
+    <%= render "follow_form" if logged_in? %>
+  </section>
+</div>
+<div class="col-md-8">
+
 </div>
