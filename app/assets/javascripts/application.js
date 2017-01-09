@@ -16,3 +16,4 @@
 //= require_bootstrap-toggle
 //= require turbolinks
 //= require_tree .
+//= require select-group

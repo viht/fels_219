@@ -4,12 +4,17 @@ class CategoriesController < ApplicationController
   skip_before_action :load_category, only: :index
 
   def index
-    @categories = Category.newest.paginate page: params[:page], per: Settings.per_page
+    @categories = Category.newest.paginate page: params[:page],
+      per_page: Settings.per_page
     @category = Category.new
     @lesson = Lesson.new
   end
 
   def show
+    @words = @category.words.paginate page: params[:page],
+      per_page: Settings.per_page
+    @word = @category.words.build
+    Settings.answers_size_default.times {@word.answers.build}
   end
 
   def create
@@ -18,6 +23,7 @@ class CategoriesController < ApplicationController
       flash[:success] = t "created_success"
       redirect_to @category
     else
+      flash[:danger] = t "create_fail"
       render :index
     end
   end
@@ -30,6 +36,7 @@ class CategoriesController < ApplicationController
       flash[:success] = t "updated_success"
       redirect_to @category
     else
+      flash[:danger] = t "update_fail"
       render :edit
     end
   end
@@ -38,7 +45,7 @@ class CategoriesController < ApplicationController
     if @category.destroy
       flash[:success] = t "deleted_success"
     else
-      flash[:danger] = t "delete_fails"
+      flash[:danger] = t "delete_fail"
     end
     redirect_to categories_url
   end
@@ -50,7 +57,10 @@ class CategoriesController < ApplicationController
   end
 
   def admin_user
-    redirect_to root_url unless current_user.admin?
+    unless current_user.admin?
+      flash[:danger] = t "please_login_user_admin"
+      redirect_to root_url
+    end
   end
 
   def load_category
