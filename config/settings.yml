@@ -8,3 +8,5 @@ answer_size_default: 4
 min_answers: 2
 max_answers: 6
 true_size_answers: 1
+size_img: 50
+size: 50

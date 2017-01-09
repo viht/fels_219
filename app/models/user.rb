@@ -22,4 +22,5 @@ class User < ActiveRecord::Base
   validates :password, presence: true,
    length: {minimum: Settings.size_password}, allow_nil: true
 
+  mount_uploader :avatar, AvatarUploader
 end

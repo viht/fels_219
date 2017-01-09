@@ -1,18 +1,44 @@
 <aside class="main-sidebar">
-    <section class="sidebar">
-      <div class="user-panel">
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder= <%= t"search" %> >
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
+  <section class="sidebar">
+    <div class="user-panel">
+      <% if logged_in? %>
+        <div class="pull-left image">
+          <%= image_tag current_user.avatar.url, class: "user-image" %>
         </div>
-      </form>
-      <ul class="sidebar-menu">
-        <li class="header"> <%= t"main" %> </li>
-      </ul>
-    </section>
+        <div class="pull-left info">
+          <p><%= link_to current_user.name, current_user %></p>
+          <a><i class="fa fa-circle text-success"></i><%= t "on_line" %></a>
+        </div>
+      <% end %>
+    </div>
+
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder= <%= t "search" %> >
+          <span class="input-group-btn">
+            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+              <i class="fa fa-search"></i>
+            </button>
+          </span>
+      </div>
+    </form>
+
+    <ul class="sidebar-menu">
+      <li class="header"> <%= t "main" %> </li>
+
+      <li class="treeview">
+        <%= link_to categories_path do %>
+          <i class="fa fa-files-o"></i>
+          <span><%= t "category" %></span>
+        <% end %>
+      </li>
+
+      <li>
+        <i class="fa fa-th"></i> <span><%= t "words_list" %></span>
+        <span class="pull-right-container">
+          <small class="label pull-right bg-green"></small>
+        </span>
+      </li>
+    </ul>
+  </section>
 </aside>
