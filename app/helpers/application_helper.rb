@@ -26,4 +26,8 @@ module ApplicationHelper
   def index_of_result index
     index + 1
   end
+
+  def time_of_lesson lesson
+    lesson.questions.size * 20
+  end
 end
