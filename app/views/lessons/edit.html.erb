@@ -1,5 +1,13 @@
 <% provide :title, t("Exam") %>
 <h2 class="center-block"><%= @lesson.category.name %></h2>
+<div class="topright">
+  <h1>
+    <span id="countdowntimer" class="label label-info">
+      <%= time_of_lesson @lesson %>
+    </span>
+  </h1>
+  <p><%= t "seconds" %></p>
+</div>
 <%= form_for [@lesson.category, @lesson] do |f| %>
   <% if @lesson.questions.any? %>
     <%= f.fields_for :questions, @lesson.questions do |builder| %>
