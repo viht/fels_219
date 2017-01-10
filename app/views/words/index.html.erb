@@ -1,0 +1,33 @@
+<% provide :title, t("all_word") %>
+ <div class="container-fluid">
+  <div class="row col-md-11 col-md-offset-2 text-left form-group">
+    <%= form_for words_path, method: :get do |f| %>
+      <ul class="list-inline">
+        <li>
+          <%= select_tag :category_id,
+            options_from_collection_for_select(@categories, :id, :name,
+            params[:category_id]),
+            include_blank: t("select_category"),
+            class: "form-control" %>
+        </li>
+        <% Settings.option.each do |condition| %>
+          <li>
+            <%= radio_button_tag :condition, condition,
+              (checked = true if params[:condition] == condition) %>
+            <%= t "word.#{condition}" %>
+          </li>
+        <% end %>
+        <li>
+          <%= f.submit t "filter",
+            class: "btn btn-default col-md-11 col-md-offset-5" %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+  <div class="col-md-11 col-md-offset-5 text-left">
+    <% @words.each do |word| %>
+      <p><%= word.content %></p>
+    <% end %>
+    <%= will_paginate %>
+  </div>
+</div>

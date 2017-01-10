@@ -11,3 +11,10 @@ true_size_answers: 1
 size_img: 50
 size: 50
 version: 1.0.0
+per_page_words: 10
+list: 25
+limit_number_word: 10
+option:
+  - learned
+  - unlearned
+  - all
