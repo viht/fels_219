@@ -1,0 +1,15 @@
+<div id="question">
+  <strong class="row">
+    <%= t "question: " %> <%= f.object.word.content %>
+  </strong>
+  <div class="row">
+    <% f.object.word.answers.random_index.each do |answer| %>
+    <div class="col-sm-1">
+      <%= f.radio_button :answer_id, answer.id, checked: false %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label answer.content, class: "font-weight-normal" %>
+    </div>
+    <% end %>
+  </div>
+</div>

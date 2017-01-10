@@ -5,4 +5,6 @@ class Answer < ActiveRecord::Base
   has_many :lessons, through: :questions
 
   validates :content, presence: true, length: {maximum: Settings.size_content}
+
+  scope :random_index, ->{order "RANDOM()"}
 end

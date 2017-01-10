@@ -1,0 +1,9 @@
+<div class="fields row">
+<p>
+  <div class="col-sm-5"><%= f.label :content, t("answer") %></div>
+  <div class="col-sm-5"><%= f.text_field :content %></div>
+  <div class="col-sm-1"><%= f.check_box :is_correct, class: "slectOne" %></div>
+  <%= link_to_remove_fields t("remove"), f %>
+</p>
+</div>
+<br>

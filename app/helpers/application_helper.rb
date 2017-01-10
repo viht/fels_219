@@ -22,4 +22,8 @@ module ApplicationHelper
     link_to_function name, "add_fields(this, \"#{association}\",
       \"#{escape_javascript(fields)}\")"
   end
+
+  def index_of_result index
+    index + 1
+  end
 end
