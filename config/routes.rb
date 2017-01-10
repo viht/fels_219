@@ -9,5 +9,13 @@ Rails.application.routes.draw do
   resources :categories do
     resources :lessons
   end
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
   resources :words
+  resources :relationships, only: [:create, :destroy]
 end

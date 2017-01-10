@@ -22,6 +22,18 @@
                 <p><%= link_to current_user.name, current_user %></p>
               </li>
               <li>
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <%= link_to t("followers"), followers_user_path(current_user) %>
+                    <%= current_user.followers.count %>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <%= link_to t("following"), following_user_path(current_user) %>
+                    <%= current_user.following.count %>
+                  </div>
+                </div>
+              </li>
                 <%= link_to t("profile"), current_user, class: "btn btn-default btn-flat" %>
               </li>
 

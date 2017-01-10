@@ -4,6 +4,13 @@ class WordsController < ApplicationController
   before_action :load_category, only: :create
   skip_before_action :load_word, only: :create
 
+  def index
+    @categories = Category.all
+    condition = params[:condition].nil? ? "all" : params[:condition]
+    @words = Word.send("by_#{condition}", current_user.id, category_id)
+      .paginate page: params[:page], per_page: Settings.list
+  end
+
   def create
     @word = @category.words.build word_params
     if @word.save
@@ -64,5 +71,9 @@ class WordsController < ApplicationController
       flash[:danger] = t "error_load"
       redirect_to categories_url
     end
+  end
+
+  def category_id
+    params[:category_id].blank? ? @categories.map(&:id) : params[:category_id]
   end
 end

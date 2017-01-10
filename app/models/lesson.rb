@@ -15,7 +15,7 @@ class Lesson < ActiveRecord::Base
 
   def lesson_questions
     self.category.words.by_unlearned(self.user_id, self.category_id).
-      random_index.each do |word|
+      random_index.limit(Settings.limit_number_word).each do |word|
         self.questions.build word_id: word.id, user_id: user_id
     end
   end

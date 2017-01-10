@@ -37,6 +37,19 @@
           <span><%= t "category" %></span>
         <% end %>
       </li>
+
+      <li>
+        <%= link_to words_path do %>
+          <i class="fa fa-th"></i>
+          <span><%= t "words_list" %></span>
+        <% end %>
+      </li>
+      <li class="treeview">
+        <%= link_to users_path do %>
+          <i class="fa fa-edit"></i>
+          <span><%= t "users" %></span>
+        <% end %>
+      </li>
     </ul>
   </section>
 </aside>

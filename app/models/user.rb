@@ -22,5 +22,24 @@ class User < ActiveRecord::Base
   validates :password, presence: true,
    length: {minimum: Settings.size_password}, allow_nil: true
 
+  scope :recent, -> {order created_at: :desc}
+
   mount_uploader :avatar, AvatarUploader
+
+  def follow other_user
+    active_relationships.create followed_id: other_user.id
+  end
+
+  def unfollow other_user
+    follow_users = active_relationships.find_by(followed_id: other_user.id)
+    if follow_users
+      follow_users.destroy
+    else
+      false
+    end
+  end
+
+  def following? other_user
+    following.include? other_user
+  end
 end

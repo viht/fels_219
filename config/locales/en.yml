@@ -97,3 +97,11 @@ en:
   Exam: "Exam"
   result: "Result"
   please_log_in: "Please login !"
+  filter: "Filter"
+  all_word: "All Word"
+  select_category: "Select a category"
+
+  following: "Following"
+    followers: "Followers"
+    unfollow: "Unfollow"
+    follow: "Follow"
