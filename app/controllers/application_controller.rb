@@ -11,4 +11,16 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def delete_questions_if_exit
+    if logged_in?
+      current_user.lessons.each do |lesson|
+        lesson.questions.each do |question|
+          if question.created_at == question.updated_at
+            question.destroy
+          end
+        end
+      end
+    end
+  end
 end

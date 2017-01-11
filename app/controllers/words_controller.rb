@@ -3,6 +3,7 @@ class WordsController < ApplicationController
   before_action :admin_user
   before_action :load_category, only: :create
   skip_before_action :load_word, only: :create
+  before_action :delete_questions_if_exit
 
   def index
     @categories = Category.all
