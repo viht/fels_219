@@ -1,5 +1,10 @@
-<% provide :title, t("Exam") %>
-<h2 class="center-block"><%= @lesson.category.name %></h2>
+<% provide :title, t("exam") %>
+<h3><div class="panel panel-primary">
+  <div class="panel-heading">
+    <%= t "exam_of" %>
+    <%= @lesson.category.name %>
+  </div>
+</div></h3>
 <div class="topright">
   <h1>
     <span id="countdowntimer" class="label label-info">
@@ -8,10 +13,11 @@
   </h1>
   <p><%= t "seconds" %></p>
 </div>
-<%= form_for [@lesson.category, @lesson] do |f| %>
+<%= form_for [@lesson.category, @lesson], html: {id: "lessonform",
+  name: "lessonform"} do |f| %>
   <% if @lesson.questions.any? %>
     <%= f.fields_for :questions, @lesson.questions do |builder| %>
-      <div id="questions">
+      <div id="questions" class="row center-block">
         <%= render "questions_fields", f: builder %>
       </div>
     <% end %>

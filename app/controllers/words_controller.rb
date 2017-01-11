@@ -1,8 +1,8 @@
 class WordsController < ApplicationController
   before_action :logged_in_user
   before_action :admin_user
-  before_action :load_category, only: :create
-  skip_before_action :load_word, only: :create
+  before_action :load_category, only: [:create, :new]
+  before_action :load_word, only: [:edit, :update, :destroy]
   before_action :delete_questions_if_exit
 
   def index
@@ -12,14 +12,20 @@ class WordsController < ApplicationController
       .paginate page: params[:page], per_page: Settings.list
   end
 
+  def new
+    @word = @category.words.build
+      Settings.answer_size_default.times {@word.answers.build}
+  end
+
   def create
     @word = @category.words.build word_params
     if @word.save
       flash[:success] = t "created_success"
+      redirect_to @category
     else
       flash[:danger] = t "create_fail"
+      render :new
     end
-    redirect_to @category
   end
 
   def edit
@@ -48,7 +54,7 @@ class WordsController < ApplicationController
 
   def word_params
     params.require(:word).permit :content,
-      answers_attributes: [:id, :content, :is_correct]
+      answers_attributes: [:id, :content, :is_correct, :_destroy]
   end
 
   def admin_user

@@ -31,20 +31,30 @@
           <span><%= t "home" %></span>
         <% end %>
       </li>
-      <li class="treeview">
-        <%= link_to categories_path do %>
-          <i class="fa fa-files-o"></i>
-          <span><%= t "category" %></span>
-        <% end %>
-      </li>
+      <% if logged_in? %>
+        <li class="treeview">
+          <%= link_to categories_path do %>
+            <i class="fa fa-files-o"></i>
+            <span><%= t "category" %></span>
+          <% end %>
+        </li>
 
-      <li>
-        <%= link_to words_path do %>
-          <i class="fa fa-th"></i>
-          <span><%= t "words_list" %></span>
-          </span>
-        <% end %>
-      </li>
+        <li>
+          <%= link_to words_path do %>
+            <i class="fa fa-th"></i>
+            <span><%= t "words_list" %></span>
+            </span>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to users_path do %>
+            <i class="fa fa-user"></i>
+            <span><%= t "people" %></span>
+            </span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </section>
 </aside>

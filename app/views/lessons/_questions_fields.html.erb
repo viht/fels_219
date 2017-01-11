@@ -1,14 +1,12 @@
 <div id="question">
-  <strong class="row">
-    <%= t "question: " %> <%= f.object.word.content %>
+  <strong class="row content-block">
+    <h4><%= t "question: " %> <%= f.object.word.content %></h4>
   </strong>
   <div class="row">
     <% f.object.word.answers.random_index.each do |answer| %>
-    <div class="col-sm-1">
-      <%= f.radio_button :answer_id, answer.id, checked: false %>
-    </div>
     <div class="col-sm-2">
-      <%= f.label answer.content, class: "font-weight-normal" %>
+      <%= f.radio_button :answer_id, answer.id, checked: false, class: "content-block" %>
+      <%= f.label answer.content %>
     </div>
     <% end %>
   </div>

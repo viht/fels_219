@@ -1,18 +1,9 @@
 <% provide :title, t("categories") %>
-<div class="row center-block form-admin">
 <% if current_user.admin? %>
-  <%= form_for @category do |f| %>
-    <%= render "shared/error_messages", object: f.object %>
-    <div class="col-md-7 field">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "form-control" %>
-      <%= f.text_area :discription, class: "form-control",
-        placeholder: t("form.discription") %>
-    </div>
-    <%= f.submit t("create"), class: "btn btn-primary" %>
-  <% end %>
+  <br>
+  <%= link_to t("new_category"), new_category_path,
+    class: "btn btn-info btn-sm " %>
 <% end %>
-</div>
 <hr>
 <h2><%= t "all_categories" %></h2>
 <% if @categories.any? %>

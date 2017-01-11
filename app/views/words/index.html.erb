@@ -1,6 +1,7 @@
 <% provide :title, t("all_word") %>
- <div class="container-fluid">
-  <div class="row col-md-11 col-md-offset-2 text-left form-group">
+<div class="container">
+  <div class="row col-md-12">
+  <br>
     <%= form_for words_path, method: :get do |f| %>
       <ul class="list-inline">
         <li>
@@ -18,16 +19,14 @@
           </li>
         <% end %>
         <li>
-          <%= f.submit t "filter",
-            class: "btn btn-default col-md-11 col-md-offset-5" %>
+          <%= f.submit t("filter"),
+            class: "btn btn-default list-inline" %>
         </li>
       </ul>
     <% end %>
   </div>
-  <div class="col-md-11 col-md-offset-5 text-left">
-    <% @words.each do |word| %>
-      <p><%= word.content %></p>
-    <% end %>
-    <%= will_paginate %>
-  </div>
+  <% @words.each do |word| %>
+    <p><%= word.content %></p>
+  <% end %>
+  <%= will_paginate %>
 </div>
