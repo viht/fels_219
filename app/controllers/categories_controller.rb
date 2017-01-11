@@ -5,14 +5,14 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.newest.paginate page: params[:page],
-      per_page: Settings.per_page
+      per_page: Settings.per_page_words
     @category = Category.new
     @lesson = Lesson.new
   end
 
   def show
     @words = @category.words.paginate page: params[:page],
-      per_page: Settings.per_page
+      per_page: Settings.per_page_words
     @word = @category.words.build
     Settings.answer_size_default.times {@word.answers.build}
   end
