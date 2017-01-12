@@ -9,8 +9,8 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.newest.paginate page: params[:page],
-      per_page: Settings.per_page_words
+    @categories = Category.search(params[:search]).alpha.
+      paginate page: params[:page], per_page: Settings.per_page
     @lesson = Lesson.new
   end
 

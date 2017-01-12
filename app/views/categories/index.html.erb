@@ -1,13 +1,28 @@
 <% provide :title, t("categories") %>
-<% if current_user.admin? %>
-  <br>
-  <%= link_to t("new_category"), new_category_path,
-    class: "btn btn-info btn-sm " %>
-<% end %>
+<div class="row">
+  <% if current_user.admin? %>
+    <br>
+    <%= link_to t("new_category"), new_category_path,
+      class: "btn btn-info btn-sm pull-right col-sm-2" %>
+  <% end %>
+  <div class="col-sm-5">
+    <%= form_tag categories_path, method: "get", id: "search-form",
+      class: "sidebar-form" do %>
+      <div class="input-group">
+        <%= text_field_tag :search, params[:search], placeholder: t("search"),
+          class: "form-control" %>
+        <span class="input-group-btn">
+          <%= button_tag type: t("submit"), class: "btn btn-flat" do %>
+            <i class="fa fa-search"></i>
+          <% end %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>
 <hr>
 <h2><%= t "all_categories" %></h2>
 <% if @categories.any? %>
-<%= will_paginate %>
   <% @categories.each do |category| %>
     <div class="panel panel-success">
       <% if current_user.admin? %>
@@ -30,4 +45,6 @@
     </div>
   <% end %>
 <%= will_paginate %>
+<% else %>
+  <p><%= t "not_found_category_with_" %><%= params[:search] %>.</p>
 <% end %>

@@ -6,5 +6,8 @@ class Category < ActiveRecord::Base
    uniqueness: {case_sensitive: false}
   validates :discription, presence: true, length: {maximum: Settings.size_area}
 
-  scope :newest, -> {order created_at: :desc}
+  scope :alpha, -> {order name: :asc}
+  scope :search, ->(search) do
+    where "name LIKE ?", "%#{search}%"
+  end
 end

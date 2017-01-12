@@ -12,16 +12,18 @@
       <% end %>
     </div>
 
-    <form action="#" method="get" class="sidebar-form">
+    <%= form_tag categories_path, method: "get", id: "search-form",
+      class: "sidebar-form" do %>
       <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder= <%= t "search" %> >
-          <span class="input-group-btn">
-            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-              <i class="fa fa-search"></i>
-            </button>
-          </span>
+        <%= text_field_tag :search, params[:search], placeholder: t("search"),
+          class: "form-control" %>
+        <span class="input-group-btn">
+          <%= button_tag type: t("submit"), class: "btn btn-flat" do %>
+            <i class="fa fa-search"></i>
+          <% end %>
+        </span>
       </div>
-    </form>
+    <% end %>
 
     <ul class="sidebar-menu">
       <li class="header"> <%= t "main" %> </li>
