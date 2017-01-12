@@ -1388,13 +1388,6 @@ body {
 }
 /*-- AgileITS --*/
 h1 {
-  text-align:center;
-  font-size:45px;
-  color:#fff;
-  padding:50px 0;
-  text-transform:uppercase;
-  font-weight: 300;
-  font-family: 'Nunito', sans-serif;
 }
 .log .content1 h2 {
   font-size:40px;
@@ -1474,18 +1467,10 @@ h1 {
   color:#fff;
 }
 h3 {
-    background: rgba(34, 81, 125, 0.82);
-    padding: 0.8em 0;
-    font-size: 1.2em;
-    color: #fff;
-    text-align: center;
-    margin-top: 2em;
 }
 h3 a {
-    color: #f2575d;
 }
 h3 a:hover{
-    color: #fff;
 }
 /*-- AgileITS --*/
 .social li {
@@ -1588,11 +1573,6 @@ li.i {
   text-align:center;
 }
 .footer p {
-  color:#fff;
-  font-size:17px;
-  font-family: 'Muli', sans-serif;
-  font-weight: 300;
-  line-height:25px;
 }
 .footer a,a:active {
   color:#fff;
@@ -1865,7 +1845,7 @@ h3 {
 
 .topright {
     position: absolute;
-    top: 45px;
+    top: 168px;
     right: 16px;
     font-size: 18px;
 }
@@ -1874,4 +1854,19 @@ h3 {
 
 .form-admin{
   padding-top: 20px;
+}
+/* forms */
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
 }

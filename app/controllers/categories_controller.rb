@@ -1,31 +1,32 @@
 class CategoriesController < ApplicationController
   before_action :admin_user, except: [:show, :index]
   before_action :logged_in_user
-  before_action :load_category, except: [:create, :index]
+  before_action :load_category, except: [:create, :new, :index]
   before_action :delete_questions_if_exit
+
+  def new
+    @category = Category.new
+  end
 
   def index
     @categories = Category.newest.paginate page: params[:page],
       per_page: Settings.per_page_words
-    @category = Category.new
     @lesson = Lesson.new
   end
 
   def show
     @words = @category.words.paginate page: params[:page],
       per_page: Settings.per_page_words
-    @word = @category.words.build
-    Settings.answer_size_default.times {@word.answers.build}
   end
 
   def create
     @category = Category.new category_params
     if @category.save
       flash[:success] = t "created_success"
-      redirect_to @category
+      redirect_to categories_path
     else
       flash[:danger] = t "create_fail"
-      render :index
+      render :new
     end
   end
 
@@ -35,7 +36,7 @@ class CategoriesController < ApplicationController
   def update
     if @category.update_attributes category_params
       flash[:success] = t "updated_success"
-      redirect_to @category
+      redirect_to categories_path
     else
       flash[:danger] = t "update_fail"
       render :edit

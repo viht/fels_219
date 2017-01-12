@@ -6,13 +6,12 @@ class Word < ActiveRecord::Base
   has_many :lessons, through: :questions
 
   accepts_nested_attributes_for :answers,
-    reject_if: proc {|attributes| attributes[:content].blank?},
     allow_destroy: true
 
   validates :content, presence: true, length: {maximum: Settings.size_content}
-  validates :answers, length: {minimum: Settings.min_answers,
-    maximum: Settings.max_answers}
+  validate :validate_count_answers
   validate :just_one_answer_true
+  validates_presence_of :answers
 
   filter_byword_learned = "id in (select questions.word_id from lessons
     join questions on lessons.id = questions.lesson_id
@@ -44,6 +43,12 @@ class Word < ActiveRecord::Base
     if self.answers.select {|answer| answer.is_correct == true}.size !=
       Settings.true_size_answers
       errors.add :base, I18n.t("errors_answers")
+    end
+  end
+
+  def validate_count_answers
+    if answers.size > Settings.max_answers || answers.size <Settings.min_answers
+      errors.add :base, I18n.t("error_size_answers")
     end
   end
 end

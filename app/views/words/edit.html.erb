@@ -1,0 +1,18 @@
+<% provide :title, t("edit_word") %>
+<h1><%= t "edit_word" %></h1>
+<div class="row center-block form-admin">
+  <% if current_user.admin? %>
+    <%= form_for @word do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <div class="field">
+        <%= f.label :content %>
+        <%= f.text_field :content, class: "form-control" %>
+      </div>
+      <%= f.fields_for :answers, @word.answers do |builder| %>
+        <%= render "answer_fields", f: builder %>
+      <% end %>
+      <p><%= link_to_add_fields t("add_answer"), f, :answers %></p>
+      <%= f.submit t("save"), class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+</div>
