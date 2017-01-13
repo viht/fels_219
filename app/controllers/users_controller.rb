@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @active_rls = User.new
+    @active_rls = @user.active_relationships.build
   end
 
   def create

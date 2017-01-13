@@ -5,7 +5,7 @@ class RelationshipsController < ApplicationController
     @user = User.find_by id: params[:followed_id]
     return processed unless @user
     current_user.follow @user
-    @active_rls = current_user.active_relationships.build
+    @active_rls = current_user.active_relationships.find_by followed_id: @user.id
     respond
   end
 
@@ -15,7 +15,7 @@ class RelationshipsController < ApplicationController
     @user = relationship.followed
     current_user.unfollow @user
     @active_rls = current_user.active_relationships.find_by followed_id: @user.id
-    respond
+    redirect_to @user
   end
 
   private
