@@ -14,16 +14,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by id: params[:id]
-    unless @user
-      redirect_to root_url
-      flash[:danger] = t "not_found"
-    end
+    @active_rls = User.new
   end
 
   def create
     @user = User.new user_params
     if @user.save
+      log_in @user
       redirect_to root_url
       flash[:success] = t "welcome_to_app"
     else
@@ -58,14 +55,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit :name, :email, :password,
       :password_confirmation, :avatar
-  end
-
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = t "let_login"
-      redirect_to login_url
-    end
   end
 
   def redirect_incorrect_user
