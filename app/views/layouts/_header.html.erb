@@ -21,6 +21,18 @@
                 <%= image_tag current_user.avatar.url %>
                 <p><%= link_to current_user.name, current_user %></p>
               </li>
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <%= link_to t("followers"), user_followers_path(current_user) %>
+                    <%= current_user.followers.count %>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <%= link_to t("following"), user_following_index_path(current_user) %>
+                    <%= current_user.following.count %>
+                  </div>
+                </div>
+              </li>
               <li>
                 <%= link_to t("profile"), current_user, class: "btn btn-default btn-flat" %>
               </li>

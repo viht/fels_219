@@ -1,0 +1,30 @@
+<div class="row">
+  <section class="content">
+    <div class="panel panel-default panel-body">
+      <% @users.each do |user| %>
+        <article class="row">
+          <div class="col-md-2 col-sm-2 hidden-xs">
+            <figure class="thumbnail text-center">
+              <%= image_tag current_user.avatar.url %>
+              <%= link_to user.name, user %>
+              <br />
+                <strong class="tiptext">
+                  <%= link_to user.following.count, user_following_index_path(user) %>
+                  <div class="description"><%= t "user_infor.following" %></div>
+                </strong>
+                <strong class="tiptext">
+                  <%= link_to user.followers.count, user_followers_path(user) %>
+                  <div class="description"><%= t "user_infor.followers" %></div>
+                </strong>
+            </figure>
+          </div>
+          <div class="panel panel-default arrow left">
+            <div class="panel-body">
+            </div>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </section>
+</div>
+<div class="center"><%= will_paginate %></div>
