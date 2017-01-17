@@ -14,6 +14,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @active_rls = @user.active_relationships.build
+    @activity = @user.activities.paginate page: params[:page],
+      per_page: Settings.per_page_activity
   end
 
   def create
